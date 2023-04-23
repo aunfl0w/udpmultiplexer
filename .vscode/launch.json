@@ -1,0 +1,48 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'udpmultiplexer'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=udpmultiplexer",
+                    "--package=udpmultiplexer"
+                ],
+                "filter": {
+                    "name": "udpmultiplexer",
+                    "kind": "bin"
+                }
+            },
+            "args": [ "--listen", "localhost:9000",
+                      "--target", "localhost:9001",
+                      "--log-count", "10",
+                      "-s", "stats"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'udpmultiplexer'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=udpmultiplexer",
+                    "--package=udpmultiplexer"
+                ],
+                "filter": {
+                    "name": "udpmultiplexer",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
